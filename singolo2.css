@@ -36,10 +36,6 @@
   box-sizing: border-box;
 }
 
-img {
-  display: inline-block;
-}
-
 html,
 body,
 ul, 
@@ -132,15 +128,15 @@ li {
   padding-top: 20px; 
 }
 
-.section__item { 
-  flex: 1 1 1px;
+.section__item {
+  max-width: calc(calc(100% - 40px) / 3);
   display: flex;
   flex-wrap: nowrap;
-  padding: 12px 1px 19px;
+  padding: 12px 0px 19px;
 }
 
 .section__item:nth-child(2) {   
-  margin: 0 20px 0 19px;
+  margin-left: -1px;
 }
 
 
@@ -188,7 +184,7 @@ li {
 }
 
 .galery {
-  padding-bottom: 27px;
+  padding-bottom: 7px;
 }
 
 .galery__wall {
@@ -196,8 +192,6 @@ li {
   justify-content: flex-start;
   width: 100%;
   flex-wrap: wrap;
-  max-height: 601px;
-  overflow: hidden;
 }
 
 .galery__wall>li {
@@ -212,6 +206,10 @@ li {
   margin-left: 20px;
 } 
 
+.galery__wall>li:nth-child(n+13) {
+  display:none;
+} 
+
 .galery__wall img {
   width: 100%;
   height: auto;
@@ -220,6 +218,14 @@ li {
 
 .section-about .layout-3-column {
   margin-right: -1px;
+}
+
+.about_introduction {
+  margin-left: 1px;
+}
+
+.about_introduction p {
+  margin: -1px -1px 1px;
 }
 
 .two-line-text {
@@ -231,35 +237,42 @@ li {
 }
 
 .person__wrapper {
-  margin-right: -1px;
-  margin-left: -1px;
-
+  max-width: 100%;
 }
 
 .person__face-img {
   width: 300px;
-  height: auto;
+  height: 300px;
   max-width: 100%;
-  max-height: 300px;
   object-fit: cover;
 }
 
-
 .person_description {
-  padding: 16px 0px;
+  padding: 17px 0px;
+  max-width: 100%;
 }
 
-.person_description h3 { 
-  max-height: 1em;
-  overflow: hidden;             
-  display: -webkit-box;         
-  -webkit-line-clamp: 1;        
-  -webkit-box-orient: vertical;
+.person_description h3 {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
+.person:first-child p { 
+  letter-spacing: -0.5px;
+}
+
+.person p { 
+  line-height: 1.8333em;
+  padding-top: 10px;
+}
 .person__social {
   display: flex;
-  padding: 12px 0 5px 1px;
+  padding: 10px 0 5px 1px;
+}
+
+.person:last-child .person__social {
+  padding-left: 0;
 }
 
 .social-icon {
@@ -272,7 +285,6 @@ li {
 }
 
 .social-icon * {
-  display: inline-block;
   height: 32px;
   width: 32px;
 }
