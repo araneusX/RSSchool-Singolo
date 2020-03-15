@@ -196,11 +196,13 @@ filter.addEventListener('click', (e) => {
 
 let selectedProject;
 wall.addEventListener('click', (e) => {
-  if (selectedProject) {
-    selectedProject.classList.remove('selected_project');
+    if (e.target.tagName === 'IMG') {
+    if (selectedProject) {
+      selectedProject.classList.remove('selected_project');
+    }
+    selectedProject = e.target;
+    selectedProject.classList.add('selected_project');
   }
-  selectedProject = e.target;
-  selectedProject.classList.add('selected_project');
 })
   
   
@@ -218,7 +220,7 @@ const modalMessage = document.getElementById('js-modal-message');
 const modalButton = document.getElementById('js-modal-button');
 
 const validateEmail = () => {
-  if (/^([a-zа-я0-9_-]+\.)*[a-zа-я0-9_-`]+@[a-zа-я0-9_-]+(\.[a-z0-9_-]+)*\.[a-zа-я]{2,6}$/i.test(email.value)) {
+  if (/^.+@.+\..+$/i.test(email.value)) {
     email.classList.remove('invalid');
     return true;
   }else{
