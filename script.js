@@ -37,7 +37,12 @@ const slider = (function () {
   section.addEventListener('mousedown', (e)=>{e.preventDefault()});
 
   const slides = document.querySelectorAll('.slide');
-  
+
+  const btnNext = document.getElementById('js-slider-next');
+  const btnPrevious = document.getElementById('js-slider-previous');
+
+  let action;
+
   let current  = (function () {
       for (let i=0; i<slides.length; i++) {
         if (slides[i].classList.contains('visible_slide')) {
@@ -46,7 +51,7 @@ const slider = (function () {
       }
     })();
   
-  const prepare = () => {
+  function prepare () {
     for (let i=0; i<slides.length; i++) {
       slides[i].classList.remove('previous_slide', 'next_slide', 'trash_next', 'trash_previous');
       if (i !== current) {
@@ -55,8 +60,13 @@ const slider = (function () {
     }
   }
 
-  const next = () => {
+  function next () {
+    action = false;
+    removeBtnListeners();
+    setTimeout(addActionListeners, 500);
+    
     prepare();
+    
     let nextIndex;
     if (current < slides.length - 1) {
       nextIndex = current + 1;
@@ -69,12 +79,25 @@ const slider = (function () {
     current = nextIndex;
     nextSlide.classList.add('next_slide');
     currentSlide.classList.add('trash_next');
-    nextSlide.addEventListener('animationend', () => {nextSlide.classList.add('visible_slide')}, {once:true});
+    nextSlide.addEventListener('animationend', () => {
+      nextSlide.classList.add('visible_slide');
+      removeActionListeners();
+      if (action) {
+        setTimeout(action);
+      }else{
+        addBtnListeners();
+      }
+    }, {once:true});
 
     section.style.backgroundColor = current % 2 === 0 ? '#ef6c64' : '#648BF0';
   }
 
-  const previous = () => {
+  function previous () {
+
+    action = false;
+    removeBtnListeners();
+    setTimeout(addActionListeners, 500);
+
     prepare();
     let previousIndex;
     if (current > 0) {
@@ -88,20 +111,56 @@ const slider = (function () {
     current = previousIndex;
     previousSlide.classList.add('previous_slide');
     currentSlide.classList.add('trash_previous');
-    previousSlide.addEventListener('animationend', () => {previousSlide.classList.add('visible_slide')}, {once:true});
+    previousSlide.addEventListener('animationend', () => {
+      previousSlide.classList.add('visible_slide');
+      removeActionListeners();
+      if (action) {
+        setTimeout(action);
+      }else{
+        addBtnListeners();
+      }
+    }, {once:true});
 
     section.style.backgroundColor = current % 2 === 0 ? '#ef6c64' : '#648BF0';
   }
 
+  function setActionNext () {
+    action = next;
+  }
+
+  function setActionPrevious () {
+    action = previous;
+  }
+  
+  function addActionListeners () {
+    btnPrevious.addEventListener('click', setActionPrevious);
+    btnNext.addEventListener('click', setActionNext);
+  }
+
+  function removeActionListeners () {
+    btnPrevious.removeEventListener('click', setActionPrevious);
+    btnNext.removeEventListener('click', setActionNext);
+  }
+
+  function addBtnListeners () {
+    btnNext.addEventListener('click', next);
+    btnPrevious.addEventListener('click', previous);
+  }
+
+  
+  function removeBtnListeners () {
+    btnNext.removeEventListener('click', next);
+    btnPrevious.removeEventListener('click', previous);
+  }
+
   return {
     next,
-    previous
+    previous,
+    start: addBtnListeners
   }
 })();
 
-
-document.getElementById('js-slider-next').addEventListener('click', () => {slider.next()});
-document.getElementById('js-slider-previous').addEventListener('click', () => {slider.previous()});
+slider.start();
 
 /*screen off*/
 

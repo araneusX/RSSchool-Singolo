@@ -233,11 +233,11 @@ li {
 
 
 .next_slide {
-  animation: next-to-screen 1s;
+  animation: next-to-screen 0.8s;
 }
 
 .previous_slide {
-  animation: previous-to-screen 1s;
+  animation: previous-to-screen 0.8s;
 }
 
 .trash_next {
@@ -313,10 +313,15 @@ li {
 }
 
 .touch_screen {
-  width: 77%;
+  /* width: 77%;
   height: 68%;
   top: 14%;
-  left: 6.5%;
+  left: 6.5%; */
+  width: 90%;
+  height: 95%;
+  top: 0%;
+  left: 0%;
+  border-radius: 9%;
 }
 
 .touch_button {
@@ -345,7 +350,8 @@ li {
 }
 
 .iPhone_horizontal .touch_screen {
-  transform: translate(0%, 7%);
+  /* transform: translate(0%, 7%); */
+  transform: translate(0%, 5.3%);
 }
 
 .iPhone_horizontal .touch_button {
