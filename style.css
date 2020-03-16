@@ -592,6 +592,9 @@ li {
   justify-content: space-between;
   width: 100%;
   flex-wrap: wrap;
+  position: relative;
+  top: -5px;
+  left: -5px;
 }
 
 .gallery__wall>li {
@@ -611,15 +614,16 @@ li {
   width: 100%;
   height: auto;
   object-fit: cover;
+  border: 5px solid transparent;
+  box-sizing: content-box;
 }
 
 .gallery__wall>li:nth-child(n+13) { /*  !+++ */
   display:none;
 }
 
-.selected_project {
+.gallery__wall img.selected_project {
   border: 5px solid #F06C64;
-  border-spacing: 5px;
 }
 
 .section-about .layout-3-column {
