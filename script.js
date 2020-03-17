@@ -174,29 +174,47 @@ iPhones.forEach((iPhone) => {
 })
 
 /*portfolio*/
-
 const filter = document.getElementById('js-filter');
 const wall = document.getElementById('js-wall');
 const projects = wall.querySelectorAll('[data-category]');
 let currentCategory = filter.querySelector('[data-category]');
 
-filter.addEventListener('click', (e) => {
-  currentCategory.classList.remove('selected');
-  currentCategory = e.target;
-  currentCategory.classList.add('selected');
+ filter.addEventListener('click', (e) => {
+   /* Первоначальная реализация с выбором по категориям.*/
+/*
+   if (e.target.parentNode === filter) {
+    currentCategory.classList.remove('selected');
+    currentCategory = e.target;
+    currentCategory.classList.add('selected');
 
-  projects.forEach((project) => {
-    if (project.dataset.category === currentCategory.dataset.category) {
-      project.classList.add('current-category');
-    }else{
-      project.classList.remove('current-category');
+    for (let project of projects) {
+      if (project.classList.contains(currentCategory.dataset.category)) {
+        project.classList.add('current-category');
+      }else{
+        project.classList.remove('current-category');
+      }
     }
-  })
-})
+  } 
+*/
+
+/*Альтернативная раализация с простым рандомным перемещение. 
+  Бессмысленно, но следует букве ТЗ*/
+
+    if (e.target.parentNode === filter && e.target !== currentCategory) {
+    currentCategory.classList.remove('selected');
+    currentCategory = e.target;
+    currentCategory.classList.add('selected');
+
+    for (let project of projects) {
+      project.style.order = `${Math.floor(Math.random() * 10)}`
+    }
+  }
+
+});
 
 let selectedProject;
 wall.addEventListener('click', (e) => {
-    if (e.target.tagName === 'IMG') {
+    if (e.target.parentNode.parentNode === wall) {
     if (selectedProject) {
       selectedProject.classList.remove('selected_project');
     }
@@ -205,9 +223,7 @@ wall.addEventListener('click', (e) => {
   }
 })
   
-  
 /*form*/
-
 const name = document.querySelector('.form__name');
 const email = document.querySelector('.form__email');
 const subject = document.querySelector('.form__subject');
