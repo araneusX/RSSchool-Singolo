@@ -3,50 +3,88 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="assets/img_final/favicon.png" type="image/x-icon">
+  <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
   <link rel="stylesheet" href="style.css">
   <title>Singolo</title>
+  <script defer src="script.js"></script>
 </head>
 <body>
   <header class="header">
     <h1>singolo</h1>
     <div class="wrapper">
       <a href="index.html">
-        <img class="logo" src="assets/img_final/logo.svg" alt="singolo">
+        <img class="logo" src="assets/img/logo.svg" alt="singolo">
       </a>
       <nav class="header__navigation">
         <ul class="navigation">
-          <li class="current"><a href="#">HOME</a></li>       
-          <li><a href="#">SERVICES</a></li>
-          <li><a href="#">PORTFOLIO</a></li>
-          <li><a href="#">ABOUT</a></li>
-          <li><a href="#">CONTACT</a></li>
+          <li id="js-home" class="current"><a href="#">HOME</a></li>       
+          <li id="js-services"><a href="#services-section">SERVICES</a></li>
+          <li id="js-portfolio"><a href="#portfolio-section">PORTFOLIO</a></li>
+          <li id="js-about"><a href="#about-section">ABOUT</a></li>
+          <li id="js-contact"><a href="#contact-section">CONTACT</a></li>
         </ul>
       </nav>
     </div>
   </header>
   <main class="main">
-    <section class="slider">
+    <section id="js-slider-section" class="slider">
+      <div class="anchor" data-anchor="js-home"></div>
       <div class="wrapper">
-        <div class="slider__screen">
-          <div class="iPhone iPhone_vertical">
-            <img src="assets/img_final/slider/shadow.png" alt="iPhone" class="iPhone__shadow shadow_vertical">
-            <div class="iPhone__background background_vertical"></div> 
-            <img src="assets/img_final/slider/body.svg" alt="iPhone" class="iPhone__body body_vertical">
-          </div>
-          <div class="iPhone iPhone_horizontal">
-            <img src="assets/img_final/slider/shadow.png" alt="iPhone" class="iPhone__shadow shadow_horizontal">
-            <div class="iPhone__background background_horizontal"></div> 
-            <img src="assets/img_final/slider/body.svg" alt="iPhone" class="iPhone__body body_horizontal">
-          </div>
-        </div>
         <div class="slider__nav">
-          <button class="slider__button button_previous"></button>
-          <button class="slider__button button_next"></button>
+          <button id="js-slider-previous" class="slider__button button_previous"></button>
+          <button id="js-slider-next" class="slider__button button_next"></button>
+        </div>
+        <div class="slider__screen">
+          <div class="slide visible_slide">
+            <div class="slide__wrapper slide_1">
+              <div class="iPhone iPhone_vertical">
+                <img src="assets/img/slider/shadow.png" alt="iPhone" class="iPhone__shadow shadow_vertical">
+                <div class="iPhone__background background_vertical"></div> 
+                <img src="assets/img/slider/body.svg" alt="iPhone" class="iPhone__body body_vertical">
+                <div class="touch touch_screen"></div>
+                <div class="touch touch_button"></div>
+              </div>
+              <div class="iPhone iPhone_horizontal">
+                <img src="assets/img/slider/shadow.png" alt="iPhone" class="iPhone__shadow shadow_horizontal">
+                <div class="iPhone__background background_horizontal"></div> 
+                <img src="assets/img/slider/body.svg" alt="iPhone" class="iPhone__body body_horizontal">
+                <div class="touch touch_screen"></div>
+                <div class="touch touch_button"></div>
+              </div>
+            </div>
+          </div>
+          <div class="slide">
+            <div class="slide__wrapper slide_2">
+              <div class="iPhone iPhone_vertical iPhone_back-left">
+                <img src="assets/img/slider/shadow.png" alt="iPhone" class="iPhone__shadow shadow_vertical">
+                <div class="iPhone__background background_vertical"></div> 
+                <img src="assets/img/slider/body.svg" alt="iPhone" class="iPhone__body body_vertical">
+                <div class="touch touch_screen"></div>
+                <div class="touch touch_button"></div>
+              </div>
+              <div class="iPhone iPhone_vertical iPhone_front">
+                <img src="assets/img/slider/shadow.png" alt="iPhone" class="iPhone__shadow shadow_vertical">
+                <div class="iPhone__background background_vertical"></div> 
+                <img src="assets/img/slider/body.svg" alt="iPhone" class="iPhone__body body_vertical">
+                <div class="touch touch_screen"></div>
+                <div class="touch touch_button"></div>
+              </div>
+              <div class="iPhone iPhone_vertical iPhone_back-right">
+                <img src="assets/img/slider/shadow.png" alt="iPhone" class="iPhone__shadow shadow_vertical">
+                <div class="iPhone__background background_vertical"></div> 
+                <img src="assets/img/slider/body.svg" alt="iPhone" class="iPhone__body body_vertical">
+                <div class="touch touch_screen"></div>
+                <div class="touch touch_button"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
-    <section class="section section-services">
+    <section  class="section section-services">
+      <div class="anchor" data-anchor="js-services">
+        <div id="services-section" class="anchor__shift"></div>
+      </div>
       <div class="wrapper">
         <div class="section__introduction services_introduction">
           <h2>Our Services</h2>
@@ -57,7 +95,7 @@
         </div>
         <div class="layout-3-column">
           <article class="section__item section-services_item">
-            <img class="section-services__icon" src="assets/img_final/icons/pen.svg" alt="Custom Design">
+            <img class="section-services__icon" src="assets/img/icons/pen.svg" alt="Custom Design">
             <div class="item__description">
               <h3>Custom Design</h3>
               <p class="three-line-text">Curabitur vestibulum eget mauris quis laoreet. 
@@ -65,7 +103,7 @@
             </div>
           </article>
           <article class="section__item section-services_item">
-            <img class="section-services__icon" src="assets/img_final/icons/bulb.svg" alt="Inovative Ideas">
+            <img class="section-services__icon" src="assets/img/icons/bulb.svg" alt="Inovative Ideas">
             <div class="item__description">
               <h3>Inovative Ideas</h3>
               <p class="three-line-text">Quisque luctus, quam eget molestie commodo, 
@@ -73,7 +111,7 @@
             </div>
           </article>
           <article class="section__item section-services_item">
-            <img class="section-services__icon" src="assets/img_final/icons/heart.svg" alt="Love Is The Answer">
+            <img class="section-services__icon" src="assets/img/icons/heart.svg" alt="Love Is The Answer">
             <div class="item__description">
               <h3>Love Is The Answer</h3>
               <p class="three-line-text">Nulla sed nunc et tortor luctus faucibus. Morbi 
@@ -83,7 +121,7 @@
         </div>
         <div class="layout-3-column">
           <article class="section__item section-services_item">
-            <img class="section-services__icon" src="assets/img_final/icons/phone.svg" alt="Responsive Layout">
+            <img class="section-services__icon" src="assets/img/icons/phone.svg" alt="Responsive Layout">
             <div class="item__description">
               <h3>Responsive Layout</h3>
               <p class="three-line-text">Sed porttitor placerat rhoncus. In at nunc 
@@ -91,7 +129,7 @@
             </div>
           </article>
           <article class="section__item section-services_item">
-            <img class="section-services__icon" src="assets/img_final/icons/bubble.svg" alt="24 / 7 Support">
+            <img class="section-services__icon" src="assets/img/icons/bubble.svg" alt="24 / 7 Support">
             <div class="item__description">
               <h3>24 / 7 Support</h3>
               <p class="three-line-text">Vivamus vel quam lacinia, tincidunt dui non, 
@@ -99,7 +137,7 @@
             </div>
           </article>
           <article class="section__item section-services_item">
-            <img class="section-services__icon" src="assets/img_final/icons/star.svg" alt="Feel Like A Star">
+            <img class="section-services__icon" src="assets/img/icons/star.svg" alt="Feel Like A Star">
             <div class="item__description">
               <h3>Feel Like A Star</h3>
               <p class="three-line-text">Quisque hendrerit purus dapibus, ornare nibh vitae, 
@@ -110,38 +148,43 @@
       </div>
     </section>
     <section class="section section-portfolio">
+      <div class="anchor" data-anchor="js-portfolio">
+        <div id="portfolio-section" class="anchor__shift"></div>
+      </div>
       <div class="wrapper">
         <div class="section__introduction portfolio_introduction">
           <h2>Portfolio</h2>
           <p>Duis mollis, est non commodo luctus, nisi erat 
             porttitor ligula, eget lacinia odio sem nec elit.</p>
         </div>
-        <div class="galery">
-          <ul class="galery__filter">
-            <li class="filter-all selected">All</li>
-            <li class="filter-web">Web Design</li>
-            <li class="filter-graphic">Graphic Design</li>
-            <li class="filter-artwork">Artwork</li>
+        <div class="gallery">
+          <ul id="js-filter" class="gallery__filter">
+            <li data-category="js-all" class="filter-all selected">All</li>
+            <li data-category="js-web" class="filter-web">Web Design</li>
+            <li data-category="js-graphic" class="filter-graphic">Graphic Design</li>
+            <li data-category="js-artwork" class="filter-artwork">Artwork</li>
           </ul>
-          <ul class="galery__wall">
-            <li><img src="assets/img_final/portfolio/Project1.png" alt="Project"></li>
-            <li><img src="assets/img_final/portfolio/Project2.png" alt="Project"></li>
-            <li><img src="assets/img_final/portfolio/Project3.png" alt="Project"></li>
-            <li><img src="assets/img_final/portfolio/Project4.png" alt="Project"></li>
-            <li><img src="assets/img_final/portfolio/Project5.png" alt="Project"></li>
-            <li><img src="assets/img_final/portfolio/Project6.png" alt="Project"></li>
-            <li><img src="assets/img_final/portfolio/Project7.png" alt="Project"></li>
-            <li><img src="assets/img_final/portfolio/Project8.png" alt="Project"></li>
-            <li><img src="assets/img_final/portfolio/Project9.png" alt="Project"></li>
-            <li><img src="assets/img_final/portfolio/Project10.png" alt="Project"></li>
-            <li><img src="assets/img_final/portfolio/Project11.png" alt="Project"></li>
-            <li><img src="assets/img_final/portfolio/Project12.png" alt="Project"></li>
-            <li><img src="assets/img_final/portfolio/Project12.png" alt="Project"></li>
+          <ul id="js-wall" class="gallery__wall">
+            <li data-category class="js-graphic"><img src="assets/img/portfolio/Project1.png" alt="Project"></li>
+            <li data-category class="js-artwork"><img src="assets/img/portfolio/Project2.png" alt="Project"></li>
+            <li data-category class="js-artwork"><img src="assets/img/portfolio/Project3.png" alt="Project"></li>
+            <li data-category class="js-web"><img src="assets/img/portfolio/Project4.png" alt="Project"></li>
+            <li data-category class="js-web"><img src="assets/img/portfolio/Project5.png" alt="Project"></li>
+            <li data-category class="js-web"><img src="assets/img/portfolio/Project6.png" alt="Project"></li>
+            <li data-category class="js-graphic"><img src="assets/img/portfolio/Project7.png" alt="Project"></li>
+            <li data-category class="js-graphic"><img src="assets/img/portfolio/Project8.png" alt="Project"></li>
+            <li data-category class="js-web"><img src="assets/img/portfolio/Project9.png" alt="Project"></li>
+            <li data-category class="js-web "><img src="assets/img/portfolio/Project10.png" alt="Project"></li>
+            <li data-category class="js-graphic js-web"><img src="assets/img/portfolio/Project11.png" alt="Project"></li>
+            <li data-category class="js-artwork js-graphic js-web"><img src="assets/img/portfolio/Project12.png" alt="Project"></li>
           </ul>
         </div>
       </div>
     </section>
-    <section class="section section-about">
+    <section  class="section section-about">
+      <div class="anchor" data-anchor="js-about">
+        <div id="about-section" class="anchor__shift"></div>
+      </div>
       <div class="wrapper">
         <div class="section__introduction about_introduction">
           <h2 class="section__title">About Us</h2>
@@ -153,7 +196,7 @@
         <div class="layout-3-column">
           <article class="section__item person">
             <div class="item__wrapper">
-              <img class="person__face-img" src="assets/img/Adam.png" alt="Adam Jensen">
+              <img class="person__face-img" src="assets/img/authors/Adam.png" alt="Adam Jensen">
               <div class="item__description person_description">
                 <h3>Adam Jensen</h3>
                 <p class="two-line-text">Quisque luctus, quam eget molestie commodo, 
@@ -162,22 +205,22 @@
               <ul class="person__icon social-icons">
                 <li class="social-icons__icon">
                   <a href="#">
-                    <img src="assets/img_final/social/facebook.svg" alt="Facebook">
+                    <img src="assets/img/social/facebook.svg" alt="Facebook">
                   </a>
                 </li>
                 <li class="social-icons__icon">
                   <a href="#">
-                    <img src="assets/img_final/social/google.svg" alt="Google">
+                    <img src="assets/img/social/google.svg" alt="Google">
                   </a>
                 </li>
                 <li class="social-icons__icon">
                   <a href="#">
-                    <img src="assets/img_final/social/twitter.svg" alt="Twitter">
+                    <img src="assets/img/social/twitter.svg" alt="Twitter">
                   </a>
                 </li>
                 <li class="social-icons__icon">
                   <a href="#">
-                    <img src="assets/img_final/social/linkedIn.svg" alt="LinkedIn">
+                    <img src="assets/img/social/linkedIn.svg" alt="LinkedIn">
                   </a>
                 </li>
               </ul>
@@ -185,7 +228,7 @@
           </article>
           <article class="section__item person">
             <div class="item__wrapper">
-              <img class="person__face-img" src="assets/img/Desmond.png" alt="Desmond Miles">
+              <img class="person__face-img" src="assets/img/authors/Desmond.png" alt="Desmond Miles">
               <div class="item__description person_description">
                 <h3>Desmond Miles</h3>
                 <p class="two-line-text">Curabitur vestibulum eget mauris quis laoreet. 
@@ -194,22 +237,22 @@
               <ul class="person__icon social-icons">
                 <li class="social-icons__icon">
                   <a href="#">
-                    <img src="assets/img_final/social/facebook.svg" alt="Facebook">
+                    <img src="assets/img/social/facebook.svg" alt="Facebook">
                   </a>
                 </li>
                 <li class="social-icons__icon">
                   <a href="#">
-                    <img src="assets/img_final/social/google.svg" alt="Google">
+                    <img src="assets/img/social/google.svg" alt="Google">
                   </a>
                 </li>
                 <li class="social-icons__icon">
                   <a href="#">
-                    <img src="assets/img_final/social/twitter.svg" alt="Twitter">
+                    <img src="assets/img/social/twitter.svg" alt="Twitter">
                   </a>
                 </li>
                 <li class="social-icons__icon">
                   <a href="#">
-                    <img src="assets/img_final/social/linkedIn.svg" alt="LinkedIn">
+                    <img src="assets/img/social/linkedIn.svg" alt="LinkedIn">
                   </a>
                 </li>
               </ul>
@@ -217,7 +260,7 @@
           </article>
           <article class="section__item person">
             <div class="item__wrapper">
-              <img class="person__face-img" src="assets/img/Scolara.png" alt="Scolara Visari">
+              <img class="person__face-img" src="assets/img/authors/Scolara.png" alt="Scolara Visari">
               <div class="item__description person_description">
                 <h3>Scolara Visari</h3>
                 <p class="two-line-text">Nulla sed nunc et tortor luctus faucibus. 
@@ -226,22 +269,22 @@
               <ul class="person__icon social-icons">
                 <li class="social-icons__icon">
                   <a href="#">
-                    <img src="assets/img_final/social/facebook.svg" alt="Facebook">
+                    <img src="assets/img/social/facebook.svg" alt="Facebook">
                   </a>
                 </li>
                 <li class="social-icons__icon">
                   <a href="#">
-                    <img src="assets/img_final/social/google.svg" alt="Google">
+                    <img src="assets/img/social/google.svg" alt="Google">
                   </a>
                 </li>
                 <li class="social-icons__icon">
                   <a href="#">
-                    <img src="assets/img_final/social/twitter.svg" alt="Twitter">
+                    <img src="assets/img/social/twitter.svg" alt="Twitter">
                   </a>
                 </li>
                 <li class="social-icons__icon">
                   <a href="#">
-                    <img src="assets/img_final/social/linkedIn.svg" alt="LinkedIn">
+                    <img src="assets/img/social/linkedIn.svg" alt="LinkedIn">
                   </a>
                 </li>
               </ul>
@@ -250,7 +293,10 @@
         </div>
       </div>
     </section>
-    <section class="section section-quote">
+    <section  class="section section-quote">
+      <div class="anchor" data-anchor="js-contact">
+        <div id="contact-section" class="anchor__shift"></div>
+      </div>
       <div class="wrapper">
         <div class="section__introduction quote_introduction">
           <h2 class="section__title">Get a Quote</h2>
@@ -260,12 +306,12 @@
             condimentum nibh.</p>
         </div>
         <div class="quote__communication">
-          <form action="" method="get" class="quote__form form">
-            <input type="text" name="singoloname" class="form__field form__name" required placeholder="Name (Required)" pattern="[A-Za-zА-Яа-яЁё\s]+">
-            <span class="alert alert_name">Please enter your name. Do not use numbers!</span>
-            <input type="email" name="singoloemail" class="form__field form__email" required placeholder="Email (Required)">
+          <form name="form" action="" method="get" class="quote__form form" novalidate  autocomplete="off">
+            <input type="text" name="singoloname" class="form__field form__name" required placeholder="Name (Required)" maxlength="50">
+            <span class="alert alert_name">Please enter your name. Use letters and space!</span>
+            <input type="email" name="singoloemail" class="form__field form__email" required placeholder="Email (Required)" maxlength="50">
             <span class="alert alert_email">Please enter a valid e-mail address.</span>
-            <input type="text" name="singolosubject" class="form__field form__subject" placeholder="Subject">
+            <input type="text" name="singolosubject" class="form__field form__subject" placeholder="Subject" maxlength="150">
             <textarea name="singolodetail" class="form__field form__detail" maxlength="900" placeholder="Describe your project in detail..."></textarea>
             <input type="submit" class="form__submit" value="Submit">
           </form>
@@ -287,6 +333,13 @@
           </div>
         </article>
       </div>
+      <div id="js-modal-window" class="modal-window">
+        <div id="js-alert" class="modal__alert">
+          <h3>Письмо отправлено</h3>
+          <div id="js-modal-message" class="modal-message"></div>
+          <button id="js-modal-button" class="modal__button">OK</button>
+      </div>
+      </div>
     </section>
   </main>
   <footer class="footer">
@@ -297,26 +350,26 @@
       <ul class="social-icons">
         <li class="social-icons__icon">
           <a href="#">
-            <img src="assets/img_final/social/facebook.svg" alt="Facebook">
+            <img src="assets/img/social/facebook.svg" alt="Facebook">
           </a>
         </li>
         <li class="social-icons__icon">
           <a href="#">
-            <img src="assets/img_final/social/google.svg" alt="Google">
+            <img src="assets/img/social/google.svg" alt="Google">
           </a>
         </li>
         <li class="social-icons__icon">
           <a href="#">
-            <img src="assets/img_final/social/twitter.svg" alt="Twitter">
+            <img src="assets/img/social/twitter.svg" alt="Twitter">
           </a>
         </li>
         <li class="social-icons__icon">
           <a href="#">
-            <img src="assets/img_final/social/linkedIn.svg" alt="LinkedIn">
+            <img src="assets/img/social/linkedIn.svg" alt="LinkedIn">
           </a>
         </li>
       </ul>
     </div>
   </footer>
-</body>
+  </body>
 </html>
