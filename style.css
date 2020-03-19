@@ -59,6 +59,7 @@ html {
   font-family: 'Lato';
   font-weight: 400;
   min-width: 1020px;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -604,11 +605,6 @@ li {
   max-height: 190px;
   height: auto;
   margin-bottom: 17px;
-  order: 1;
-}
-
-.gallery__wall>li.current-category {
-  order: 0;
 }
 
 .gallery__wall img {

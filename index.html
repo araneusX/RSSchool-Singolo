@@ -16,7 +16,7 @@
         <img class="logo" src="assets/img/logo.svg" alt="singolo">
       </a>
       <nav class="header__navigation">
-        <ul class="navigation">
+        <ul id="js-navbar" class="navigation">
           <li id="js-home" class="current"><a href="#">HOME</a></li>       
           <li id="js-services"><a href="#services-section">SERVICES</a></li>
           <li id="js-portfolio"><a href="#portfolio-section">PORTFOLIO</a></li>
@@ -27,8 +27,10 @@
     </div>
   </header>
   <main class="main">
+    <div class="anchor" data-anchor="js-home">
+      <div id="home-section" class="anchor__shift"></div>
+    </div>
     <section id="js-slider-section" class="slider">
-      <div class="anchor" data-anchor="js-home"></div>
       <div class="wrapper">
         <div class="slider__nav">
           <button id="js-slider-previous" class="slider__button button_previous"></button>
@@ -81,10 +83,10 @@
         </div>
       </div>
     </section>
+    <div class="anchor" data-anchor="js-services">
+      <div id="services-section" class="anchor__shift"></div>
+    </div>
     <section  class="section section-services">
-      <div class="anchor" data-anchor="js-services">
-        <div id="services-section" class="anchor__shift"></div>
-      </div>
       <div class="wrapper">
         <div class="section__introduction services_introduction">
           <h2>Our Services</h2>
@@ -147,10 +149,10 @@
         </div>
       </div>
     </section>
+    <div class="anchor" data-anchor="js-portfolio">
+      <div id="portfolio-section" class="anchor__shift"></div>
+    </div>
     <section class="section section-portfolio">
-      <div class="anchor" data-anchor="js-portfolio">
-        <div id="portfolio-section" class="anchor__shift"></div>
-      </div>
       <div class="wrapper">
         <div class="section__introduction portfolio_introduction">
           <h2>Portfolio</h2>
@@ -159,32 +161,32 @@
         </div>
         <div class="gallery">
           <ul id="js-filter" class="gallery__filter">
-            <li data-category="js-all" class="filter-all selected">All</li>
-            <li data-category="js-web" class="filter-web">Web Design</li>
-            <li data-category="js-graphic" class="filter-graphic">Graphic Design</li>
-            <li data-category="js-artwork" class="filter-artwork">Artwork</li>
+            <li class="filter-all selected">All</li>
+            <li class="filter-web">Web Design</li>
+            <li class="filter-graphic">Graphic Design</li>
+            <li class="filter-artwork">Artwork</li>
           </ul>
           <ul id="js-wall" class="gallery__wall">
-            <li data-category class="js-graphic"><img src="assets/img/portfolio/Project1.png" alt="Project"></li>
-            <li data-category class="js-artwork"><img src="assets/img/portfolio/Project2.png" alt="Project"></li>
-            <li data-category class="js-artwork"><img src="assets/img/portfolio/Project3.png" alt="Project"></li>
-            <li data-category class="js-web"><img src="assets/img/portfolio/Project4.png" alt="Project"></li>
-            <li data-category class="js-web"><img src="assets/img/portfolio/Project5.png" alt="Project"></li>
-            <li data-category class="js-web"><img src="assets/img/portfolio/Project6.png" alt="Project"></li>
-            <li data-category class="js-graphic"><img src="assets/img/portfolio/Project7.png" alt="Project"></li>
-            <li data-category class="js-graphic"><img src="assets/img/portfolio/Project8.png" alt="Project"></li>
-            <li data-category class="js-web"><img src="assets/img/portfolio/Project9.png" alt="Project"></li>
-            <li data-category class="js-web "><img src="assets/img/portfolio/Project10.png" alt="Project"></li>
-            <li data-category class="js-graphic js-web"><img src="assets/img/portfolio/Project11.png" alt="Project"></li>
-            <li data-category class="js-artwork js-graphic js-web"><img src="assets/img/portfolio/Project12.png" alt="Project"></li>
+            <li><img src="assets/img/portfolio/Project1.png" alt="Project"></li>
+            <li><img src="assets/img/portfolio/Project2.png" alt="Project"></li>
+            <li><img src="assets/img/portfolio/Project3.png" alt="Project"></li>
+            <li><img src="assets/img/portfolio/Project4.png" alt="Project"></li>
+            <li><img src="assets/img/portfolio/Project5.png" alt="Project"></li>
+            <li><img src="assets/img/portfolio/Project6.png" alt="Project"></li>
+            <li><img src="assets/img/portfolio/Project7.png" alt="Project"></li>
+            <li><img src="assets/img/portfolio/Project8.png" alt="Project"></li>
+            <li><img src="assets/img/portfolio/Project9.png" alt="Project"></li>
+            <li><img src="assets/img/portfolio/Project10.png" alt="Project"></li>
+            <li><img src="assets/img/portfolio/Project11.png" alt="Project"></li>
+            <li><img src="assets/img/portfolio/Project12.png" alt="Project"></li>
           </ul>
         </div>
       </div>
     </section>
+    <div class="anchor" data-anchor="js-about">
+      <div id="about-section" class="anchor__shift"></div>
+    </div>
     <section  class="section section-about">
-      <div class="anchor" data-anchor="js-about">
-        <div id="about-section" class="anchor__shift"></div>
-      </div>
       <div class="wrapper">
         <div class="section__introduction about_introduction">
           <h2 class="section__title">About Us</h2>
@@ -293,10 +295,10 @@
         </div>
       </div>
     </section>
+    <div class="anchor" data-anchor="js-contact">
+      <div id="contact-section" class="anchor__shift"></div>
+    </div>
     <section  class="section section-quote">
-      <div class="anchor" data-anchor="js-contact">
-        <div id="contact-section" class="anchor__shift"></div>
-      </div>
       <div class="wrapper">
         <div class="section__introduction quote_introduction">
           <h2 class="section__title">Get a Quote</h2>

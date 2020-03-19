@@ -2,9 +2,8 @@
 
 /*header*/
 
-
 const anchors = document.querySelectorAll('.anchor');
-const navigationItems = document.querySelectorAll('.navigation>li');
+const navigationItems = document.querySelectorAll('#js-navbar>li');
 let currentNavigationItem = document.getElementById('js-home');
 
 const followCurrentNavigationItem = () => {
@@ -28,8 +27,6 @@ const followCurrentNavigationItem = () => {
 window.addEventListener('scroll', followCurrentNavigationItem);
 
 /*slider*/
-
-
 
 const slider = (function () {
 
@@ -176,40 +173,33 @@ iPhones.forEach((iPhone) => {
 /*portfolio*/
 const filter = document.getElementById('js-filter');
 const wall = document.getElementById('js-wall');
-const projects = wall.querySelectorAll('[data-category]');
-let currentCategory = filter.querySelector('[data-category]');
+const projects = wall.querySelectorAll('li');
+let currentCategory = filter.querySelector('li');
 
- filter.addEventListener('click', (e) => {
-   /* Первоначальная реализация с выбором по категориям.*/
-/*
-   if (e.target.parentNode === filter) {
+filter.addEventListener('click', (e) => {
+  if (e.target.parentNode === filter && e.target !== currentCategory) {
     currentCategory.classList.remove('selected');
     currentCategory = e.target;
     currentCategory.classList.add('selected');
 
+    const arrProjects = [];
+
     for (let project of projects) {
-      if (project.classList.contains(currentCategory.dataset.category)) {
-        project.classList.add('current-category');
+      let randomizer = Math.floor(Math.random() * 10) %2 === 0 ? true : false;
+      if (randomizer) {
+        arrProjects.unshift(project);
       }else{
-        project.classList.remove('current-category');
+        arrProjects.push(project);
       }
     }
-  } 
-*/
 
-/*Альтернативная раализация с простым рандомным перемещение. 
-  Бессмысленно, но следует букве ТЗ*/
-
-    if (e.target.parentNode === filter && e.target !== currentCategory) {
-    currentCategory.classList.remove('selected');
-    currentCategory = e.target;
-    currentCategory.classList.add('selected');
-
-    for (let project of projects) {
-      project.style.order = `${Math.floor(Math.random() * 10)}`
+    for (let i = 0; i < arrProjects.length; i++){
+      wall.firstChild.remove();
+    }
+    for (let i = 0; i < arrProjects.length; i++){
+      wall.append(arrProjects[i]);
     }
   }
-
 });
 
 let selectedProject;
