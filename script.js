@@ -3,27 +3,71 @@
 /*header*/
 
 const anchors = document.querySelectorAll('.anchor');
-const navigationItems = document.querySelectorAll('#js-navbar>li');
+const navbar = document.getElementById('js-navbar');
 let currentNavigationItem = document.getElementById('js-home');
+let isScroll = false;
 
-const followCurrentNavigationItem = () => {
-  
-  currentNavigationItem.classList.remove('current');
-
-  let currentItem = anchors[0];
-  anchors.forEach((el) => {
-    const currTop = currentItem.getBoundingClientRect().top;
-    const elTop = el.getBoundingClientRect().top;
-    
-    if (elTop < window.innerHeight/2 && currTop < elTop) {
-      currentItem = el;
+const smoothScrollTo = (elem) => {
+  const targetPosition = elem.getBoundingClientRect().top;
+  const step = targetPosition / 28;
+  let i = 1;
+  const timer = setInterval(() => {
+    if ( i <= 9) {
+      let acceleration;
+      if (i <= 3) {
+        acceleration = i;
+      }else if (i <= 7) {
+        acceleration = 4;
+      }else{
+        acceleration = 11 - i;
+      }
+      window.scrollBy(0, Math.round(step * acceleration));
+      i++;
+    }else{
+      clearInterval(timer);
+      elem.scrollIntoView();
     }
-  });
-  
-  currentNavigationItem = document.getElementById(`${currentItem.dataset.anchor}`);
-  currentNavigationItem.classList.add('current');
+  }, 60);
+  window.addEventListener('wheel', () => {clearInterval(timer);}, {once:true})
 }
 
+const onNavigation = (e) => {
+  e.preventDefault();
+  isScroll = false;
+  if (e.target.parentNode.parentNode === navbar) {
+    const targetElement = document.getElementById(e.target.dataset.anchor)
+    smoothScrollTo(targetElement);
+  }
+}
+
+navbar.addEventListener('click', onNavigation);
+
+const followCurrentNavigationItem = () => {
+  let currentItem = anchors[0];
+  let lastItem = anchors[anchors.length-1];
+
+  if (document.documentElement.scrollHeight - document.documentElement.scrollTop === document.documentElement.clientHeight) {
+    currentItem = lastItem;
+    currentNavigationItem.classList.remove('current');
+    currentNavigationItem = document.getElementById(`${currentItem.dataset.anchor}`);
+    currentNavigationItem.classList.add('current');
+    return;
+  }
+
+  for (let i = 0; i < anchors.length; i++) {
+    const currTop = currentNavigationItem.getBoundingClientRect().top + 100;
+    const elTop = anchors[i].getBoundingClientRect().top + 100;
+    if ((elTop >= 0 && elTop < window.innerHeight/2) || 
+        (elTop < 0 && elTop < window.innerHeight/3 && currTop > window.innerHeight/2)) {
+      currentItem = anchors[i];
+      currentNavigationItem.classList.remove('current');
+      currentNavigationItem = document.getElementById(`${currentItem.dataset.anchor}`);
+      currentNavigationItem.classList.add('current');
+      return;
+    }
+  };
+}
+followCurrentNavigationItem();
 window.addEventListener('scroll', followCurrentNavigationItem);
 
 /*slider*/

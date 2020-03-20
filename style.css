@@ -59,7 +59,6 @@ html {
   font-family: 'Lato';
   font-weight: 400;
   min-width: 1020px;
-  scroll-behavior: smooth;
 }
 
 body {
@@ -443,6 +442,7 @@ li {
 .slider__button:hover {
   transform: scale(1.2);
   filter: invert();
+  cursor: pointer;
 }
 
 .slider__button:active {
