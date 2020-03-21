@@ -217,7 +217,6 @@ iPhones.forEach((iPhone) => {
 /*portfolio*/
 const filter = document.getElementById('js-filter');
 const wall = document.getElementById('js-wall');
-const projects = wall.querySelectorAll('li');
 let currentCategory = filter.querySelector('li');
 
 filter.addEventListener('click', (e) => {
@@ -226,16 +225,9 @@ filter.addEventListener('click', (e) => {
     currentCategory = e.target;
     currentCategory.classList.add('selected');
 
-    const arrProjects = [];
-
-    for (let project of projects) {
-      let randomizer = Math.floor(Math.random() * 10) %2 === 0 ? true : false;
-      if (randomizer) {
-        arrProjects.unshift(project);
-      }else{
-        arrProjects.push(project);
-      }
-    }
+    const arrProjects = [...wall.querySelectorAll('li')];
+    const movedElement = arrProjects.pop();
+    arrProjects.unshift(movedElement);
 
     for (let i = 0; i < arrProjects.length; i++){
       wall.firstChild.remove();
