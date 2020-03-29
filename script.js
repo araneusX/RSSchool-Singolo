@@ -278,6 +278,11 @@ wall.addEventListener('click', (e) => {
 })
   
 /*form*/
+const form = document.getElementById('js-form');
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+});
+
 const name = document.querySelector('.form__name');
 const email = document.querySelector('.form__email');
 const subject = document.querySelector('.form__subject');
