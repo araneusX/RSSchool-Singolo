@@ -9,11 +9,16 @@
   <script defer src="script.js"></script>
 </head>
 <body>
-  <header class="header">
+  <header class="header" id="js-header">
     <h1>singolo</h1>
     <div class="wrapper">
-      <a href="index.html">
-        <img class="logo" src="assets/img/logo.svg" alt="singolo">
+      <div class="mobile-bar">
+        <button id="js-menu-button" class="menu-button">
+          <img src="assets/img/menu.svg" alt="MENU">
+        </button>
+      </div>
+      <a href="index.html" class="logo">
+        <img id="js-logo-img" src="assets/img/logo.svg" alt="singolo">
       </a>
       <nav class="header__navigation">
         <ul id="js-navbar" class="navigation">

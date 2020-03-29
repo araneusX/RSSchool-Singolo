@@ -2,11 +2,15 @@
 
 /*header*/
 
-const anchors = document.querySelectorAll('.anchor');
 const navbar = document.getElementById('js-navbar');
 let currentNavigationItem = document.getElementById('js-home');
+const anchors = document.querySelectorAll('.anchor');
+let lastPosition = anchors.length - 1;
+let currentPosition = 0;
+
 let isScroll = false;
 
+/* smooth scroll in JS */
 const smoothScrollTo = (elem) => {
   const targetPosition = elem.getBoundingClientRect().top;
   const step = targetPosition / 28;
@@ -36,36 +40,60 @@ const onNavigation = (e) => {
   isScroll = false;
   if (e.target.parentNode.parentNode === navbar) {
     const targetElement = document.getElementById(e.target.dataset.anchor)
-    smoothScrollTo(targetElement);
+    smoothScrollTo(targetElement); 
   }
 }
 
-navbar.addEventListener('click', onNavigation);
+// navbar.addEventListener('click', onNavigation); // for smooth scroll
+
+/* menu show */
+
+const menuBurger = document.getElementById('js-menu-button');
+const header = document.getElementById('js-header');
+const logo = document.getElementById('js-logo-img');
+
+const onMenuClick = (e) => {
+  if (e.target !== navbar && e.target !== logo && e.target.parentNode !== navbar) {
+    document.removeEventListener('click', onMenuClick);
+    header.classList.remove('menu-open');
+    menuBurger.addEventListener('click', onBurgerClick, {once: true});
+    setTimeout(()=> {logo.parentNode.classList.remove('transitioned');}, 500);
+  }
+}
+
+const onBurgerClick = (e) => {
+  e.stopPropagation();
+  logo.parentNode.classList.add('transitioned');
+  header.classList.add('menu-open');
+  document.addEventListener('click', onMenuClick);
+}
+
+menuBurger.addEventListener('click', onBurgerClick, {once: true});
+
+/**/
 
 const followCurrentNavigationItem = () => {
-  let currentItem = anchors[0];
-  let lastItem = anchors[anchors.length-1];
 
-  if (document.documentElement.scrollHeight - document.documentElement.scrollTop === document.documentElement.clientHeight) {
-    currentItem = lastItem;
+  const changeCurrent = (nextPosition) => {
+    currentPosition = nextPosition;
     currentNavigationItem.classList.remove('current');
-    currentNavigationItem = document.getElementById(`${currentItem.dataset.anchor}`);
+    currentNavigationItem = document.getElementById(anchors[nextPosition].dataset.anchor);
     currentNavigationItem.classList.add('current');
-    return;
   }
 
-  for (let i = 0; i < anchors.length; i++) {
-    const currTop = currentNavigationItem.getBoundingClientRect().top + 100;
-    const elTop = anchors[i].getBoundingClientRect().top + 100;
-    if ((elTop >= 0 && elTop < window.innerHeight/2) || 
-        (elTop < 0 && elTop < window.innerHeight/3 && currTop > window.innerHeight/2)) {
-      currentItem = anchors[i];
-      currentNavigationItem.classList.remove('current');
-      currentNavigationItem = document.getElementById(`${currentItem.dataset.anchor}`);
-      currentNavigationItem.classList.add('current');
-      return;
+  if (anchors[currentPosition].getBoundingClientRect().top > window.innerHeight/2) {
+    changeCurrent(currentPosition - 1);
+  }else if (document.documentElement.scrollHeight - document.documentElement.scrollTop === document.documentElement.clientHeight) {
+    changeCurrent(lastPosition);
+  }else{
+    for (let i = 0; i < anchors.length; i++) {
+      const elTop = anchors[i].getBoundingClientRect().top;
+      if (elTop >= 0 && elTop < window.innerHeight/2) {
+        changeCurrent(i);
+        return;
+      }
     }
-  };
+  }
 }
 followCurrentNavigationItem();
 window.addEventListener('scroll', followCurrentNavigationItem);
